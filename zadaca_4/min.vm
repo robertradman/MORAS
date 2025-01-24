@@ -1,0 +1,36 @@
+push static 0
+push static 1
+push static 2
+
+call Min.min 3
+
+pop static 3
+
+label END
+goto END
+
+function Min.min 3
+    push argument 1
+    push argument 0
+    lt
+    if-goto TRUE
+    goto SKIP
+
+label TRUE
+    push argument 1
+    pop argument 0
+
+label SKIP
+    push argument 2
+    push argument 0
+    lt
+    if-goto TRUE1
+    goto SKIP2
+
+label TRUE1
+    push argument 2
+    pop argument 0
+
+label SKIP2
+    push argument 0
+    return

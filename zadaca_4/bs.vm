@@ -1,0 +1,93 @@
+push static 0
+push static 1
+push static 2
+
+call BS.search 3
+pop static 3
+
+label END
+goto END
+
+function BS.search 6
+    push constant 0
+    pop local 0
+    push argument 1
+    push constant 1
+    sub
+    pop local 1
+
+    label LOOP
+        push local 0
+        push local 1
+        gt
+        if-goto JUMP
+
+        push local 0
+        push local 1
+        push local 0
+        sub
+        call BS.div 1
+        add
+        pop local 2
+
+        push argument 0
+        push local 2
+        add
+        pop pointer 1
+        push that 0
+        push argument 2
+        eq
+        if-goto FOUND
+
+        push that 0
+        push argument 2
+        lt
+        if-goto UPDATE
+
+        push local 2
+        push constant 1
+        sub
+        pop local 1
+
+        goto LOOP
+
+    label UPDATE
+        push local 2
+        push constant 1
+        add
+        pop local 0
+
+        goto LOOP
+
+    label FOUND
+        push local 2
+        return
+
+    label JUMP
+        push constant 0
+        push constant 1
+        sub
+        return
+
+
+function BS.div 1
+    label DIV_LOOP
+        push argument 0
+        push constant 2
+        lt
+        not
+        not
+        if-goto DIV_END
+        push local 0
+        push constant 1
+        add
+        pop local 0
+        push argument 0
+        push constant 2
+        sub
+        pop argument 0
+        goto DIV_LOOP
+		
+    label DIV_END
+        push local 0
+        return
