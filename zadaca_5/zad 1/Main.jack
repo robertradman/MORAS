@@ -1,0 +1,40 @@
+class Main {
+
+   function void main() {
+      var Array A;
+      var int size;
+      var int i;
+
+      let size = 6;
+      let A = Array.new(size);
+
+      let A[0] = 34;
+      let A[1] = 7;
+      let A[2] = 23;
+      let A[3] = 32;
+      let A[4] = 5;
+      let A[5] = 10;
+
+      do Output.printString("Nesortirano: ");
+      let i = 0;
+      while (i < size) {
+         do Output.printInt(A[i]);
+         do Output.printString(" ");
+         let i = i + 1;
+      }
+      do Output.println();
+
+      do Qs.qsort(A, 0, size - 1);
+
+      do Output.printString("Sortirano: ");
+      let i = 0;
+      while (i < size) {
+         do Output.printInt(A[i]);
+         do Output.printString(" ");
+         let i = i + 1;
+      }
+      do Output.println();
+
+      return;
+   }
+}
